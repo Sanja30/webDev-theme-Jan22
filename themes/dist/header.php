@@ -11,61 +11,45 @@
           rel="stylesheet">
 --> 
 </head>
-<body class="home">
-<a href="#content" class="screen-reader-text">Zum Inhalt springen</a>
+<body <?php body_class(); ?>>
+<?php if(is_front_page()):?>
+<a href="#content" class="screen-reader-text"><?php _e('Zum Inhalt springen', 'wifi'); ?></a>
+<?php endif; ?>
 <div id="navbar" class="container">
     <div id="brand">
-        <a href="index.html">
-            <img src="img/logo.svg" alt="Logo Web Developer">
-        </a>
+
+    <?php 
+       if(function_exists('the_custom_logo')){
+        the_custom_logo();
+       }
+    ?>   
+
     </div>
     <input type="checkbox" id="nav-trigger">
     <label for="nav-trigger" id="burger-button">
         <span class="burger-icon" aria-hidden="true"></span>
-        <span class="screen-reader-text">Navigation öffnen/schließen</span>
+        <span class="screen-reader-text"><?php _e('Navogation öffnen/schließen', 'wifi'); ?></span>
     </label>
     <nav id="main-nav">
-        <ul class="nav-menu">
-            <li class="current-menu-item">
-                <a href="index.html">Home</a>
-            </li>
-            <li id="menu-item-2" class="menu-item-has-children">
-                <a href="leistungen.html">Leistungen</a>
-                <!-- TODO: Sub-Menu Toggle via JS einfügen
-                <input type="checkbox" id="menu-item-2-toggle">
-                <label for="menu-item-2-toggle" class="menu-toggle">
-                    <span class="toggle-icon" aria-hidden="true"></span>
-                    <span class="screen-reader-text">Submenu öffnen/schließen</span>
-                </label>
-                -->
-                <ul class="sub-menu">
-                    <li>
-                        <a href="leistungen/web-entwicklung.html">Web Entwicklung</a>
-                    </li>
-                    <li>
-                        <a href="leistungen/web-design.html">Web Design</a>
-                    </li>
-                    <li>
-                        <a href="leistungen/schulungen.html">Schulungen</a>
-                    </li>
-                </ul>
-            </li>
-            <li>
-                <a href="ueber-uns.html">Über uns</a>
-            </li>
-            <li>
-                <a href="blog.html">Blog</a>
-            </li>
-            <li class="cta">
-                <a href="#kontakt">Kontakt</a>
-            </li>
-        </ul>
+       <?php
+        wp_nav_menu(array(
+            'theme_location' => 'primary',
+            'container' => false,
+            'menu_class' => 'nav-menu',
+            'depth' => 2,
+            'fallback_cb' => false
+        ));
+         ?>
     </nav>
 </div>
-<header id="page-header">
-    <h1 class="page-title animate zoom-in">WIFI Web Developer</h1>
+<?php if(is_front_page()):?>
+<header id="page-header" style="background-image: url('<?php the_field('headerimage');?>');">
+    <h1 class="page-title animate zoom-in"><?php the_title(); ?></h1>
     <a href="#content" class="scroll-down">
         <span class="icon-arrow-down" aria-hidden="true"></span>
-        <span class="screen-reader-text">Zum Inhalt</span>
+        <span class="screen-reader-text"><?php _e('Zum Inhalt', 'wifi'); ?></span>
     </a>
 </header>
+<?php else: ?>
+   <div id="page-header" style="background-image: url('<?php the_field('headerimage'); ?>');"></div>
+<?php endif; ?>    

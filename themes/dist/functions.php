@@ -57,6 +57,23 @@ add_action('after_setup_theme', function () {
         'comment-form'
     ));
 
+    //Suport fur Custom Logo
+    add_theme_support('custom-logo', array(
+        'height' => 60,
+        'width' => 100,
+        'flex-height' => false,
+        'flex-width' => true,
+    ));
+
+     //Menus registrieren
+     register_nav_menus(array(
+         'primary' => __('Hauptnavigation', 'wifi')
+     ));
+
+
+
+
+
     /* -- Gutenberg Editor --
     * https://developer.wordpress.org/block-editor/developers/themes/theme-support/
     * Offizielle Doku zum Gutenberg Editor: https://developer.wordpress.org/block-editor/
@@ -97,6 +114,14 @@ add_action('wp_enqueue_scripts', function () {
     wp_register_style('owl-css', get_template_directory_uri() . '/assets/owl-carousel/assets/owl.carousel.min.css');
     wp_enqueue_style('owl-theme-css', get_template_directory_uri() . '/assets/owl-carousel/assets/owl.theme.default.min.css');
 
+    //JS Dataien im Theme einbinden
+    wp_enqueue_script('lightbox', get_template_directory_uri() . '/assets/lightbox/js/lightbox.min.js', array('jquery'), $theme_version, true);
+    wp_enqueue_script('webdev-scripts', get_template_directory_uri() . '/assets/scripts.js', array('jquery'), $theme_version, true);
+
+
+    //JS Dataien im Theme registrieren
+    wp_register_script('owl-script', get_template_directory_uri() . '/assets/owl-carousel/owl.carousel.min.js', array('jquery'), $theme_version, true);
+
 
 });
 
@@ -132,12 +157,14 @@ if (function_exists('acf_add_options_page')) {
     * https://wordpress.stackexchange.com/questions/315511/gutenberg-editor-add-a-custom-category-as-wrapper-for-custom-blocks
     */
 
-    add_filter('block_categories', function ($categories, $post) {
+    /*add_filter('block_categories', function ($categories, $post) {
         if ($post->post_type !== 'page') {
             return $categories;
         }
 
         /* "array_merge()" fügt zwei oder mehrere arrays zusammen: https://www.php.net/manual/de/function.array-merge.php  */
+/*
+        
         return array_merge(
             array(
                 array(
@@ -148,7 +175,7 @@ if (function_exists('acf_add_options_page')) {
             $categories
         );
     }, 10, 2);
-
+  /*
 
     /* -- ACF Gutenberg-Blöcke erstellen --
     * https://www.advancedcustomfields.com/resources/acf_register_block_type/

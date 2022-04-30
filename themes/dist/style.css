@@ -481,7 +481,7 @@ textarea:focus {
 }
 
 #page-header {
-    background-image: url(img/tablet.png);
+    
     background-size: cover;
     background-repeat: no-repeat;
     background-position: center center;

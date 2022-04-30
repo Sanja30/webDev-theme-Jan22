@@ -1,2 +1,3 @@
 <?php /*Template Name: Homepage*/?>
-homepage.php
+<?php get_header();?>
+<?php get_footer();?>
