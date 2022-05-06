@@ -61,54 +61,80 @@
     <div class="columns">
         <div class="col-3">
             <ul class="social-links">
+
+            <?php $facebook = get_field('facebook', 'options');?>
+            <?php if(!empty($facebook)): ?>
                 <li>
-                    <a href="https://www.facebook.com/" target="_blank" rel="nofollow">
+                    <a href="<?php echo($facebook); ?>" target="_blank" rel="nofollow">
                         <span class="icon-facebook" aria-hidden="true"></span>
                         <span class="screen-reader-text">Folge uns auf Facebook</span>
                     </a>
                 </li>
+            <?php endif; ?> 
+
+            <?php $instagram = get_field('instagram', 'options');?>
+            <?php if(!empty($instagram)): ?>
                 <li>
-                    <a href="https://www.instagram.com/" target="_blank" rel="nofollow">
+                    <a href="<?php echo($instagram); ?>" target="_blank" rel="nofollow">
                         <span class="icon-instagram" aria-hidden="true"></span>
                         <span class="screen-reader-text">Folge uns auf Instagram</span>
                     </a>
                 </li>
+            <?php endif; ?>
+
+            <?php $linkedin = get_field('linkedin', 'options');?>
+            <?php if(!empty($linkedin)): ?>
                 <li>
-                    <a href="https://www.linkedin.com/" target="_blank" rel="nofollow">
+                    <a href="<?php echo($linkedin); ?>" target="_blank" rel="nofollow">
                         <span class="icon-linkedin" aria-hidden="true"></span>
                         <span class="screen-reader-text">Folge uns auf LinkedIn</span>
                     </a>
                 </li>
+            <?php endif; ?>
+
+            <?php $you_tube = get_field('you_tube', 'options');?>
+            <?php if(!empty($you_tube)): ?>
                 <li>
-                    <a href="https://www.youtube.com/" target="_blank" rel="nofollow">
+                    <a href="<?php echo($you_tube); ?>" target="_blank" rel="nofollow">
                         <span class="icon-youtube" aria-hidden="true"></span>
                         <span class="screen-reader-text">Folge uns auf YouTube</span>
                     </a>
                 </li>
+            <?php endif; ?>    
+
+
             </ul>
         </div>
         <div class="col-3">
-            <span class="copyright">&copy; WIFI Graz</span>
+            <span class="copyright">&copy; <?php bloginfo('name'); ?></span>
         </div>
         <div class="col-3">
             <nav id="footer-nav">
-                <ul class="nav-menu">
+               <!-- <ul class="nav-menu">
                     <li>
                         <a href="datenschutz.html">Datanschutz</a>
                     </li>
                     <li>
                         <a href="impressum.html">Imressum</a>
                     </li>
-                </ul>
+                </ul>-->
+                <?php 
+                wp_nav_menu(array(
+                    'theme_location' => 'footer', /*ime menua u wp*/
+                    'container' => false, /*da nebude containerom umfasst*/
+                    'menu_class' => 'nav-menu',
+                    'depth' => 1,
+                    'fallback_cb' => false /*da nebude standard menu*/
+                ));
+                
+                ?>
             </nav>
         </div>
     </div>
 </footer>
 <div id="to-top">
-    <a href="#page-header">Top</a>
+    <a href="#page-header"><?php _e('Top', 'wifi'); ?></a>
 </div>
-
-
 <?php wp_footer(); ?>
 <!--
 <script src="assets/owl-carousel/owl.carousel.min.js"></script>

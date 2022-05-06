@@ -67,7 +67,8 @@ add_action('after_setup_theme', function () {
 
      //Menus registrieren
      register_nav_menus(array(
-         'primary' => __('Hauptnavigation', 'wifi')
+         'primary' => __('Hauptnavigation', 'wifi'),
+         'footer' => __('Footernavigation', 'wifi'),
      ));
 
 

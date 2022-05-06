@@ -109,7 +109,10 @@ img {
 figure {
     margin: 0
 }
-
+.wpforms-submit-container {
+    text-align: center;
+}
+#kontakt button[type="submit"],
 .btn,
 a.btn,
 button,
@@ -136,7 +139,7 @@ input[type=submit] {
     transition: box-shadow .2s linear, -webkit-box-shadow .2s linear;
     cursor: pointer
 }
-
+#kontakt button[type="submit"]:hover,
 .btn:hover,
 a.btn:hover,
 button:hover,
@@ -149,7 +152,7 @@ input[type=submit]:hover {
     background: linear-gradient(65deg, #3d93e1 0, #7229b2 100%);
     text-decoration: none
 }
-
+#kontakt button[type="submit"]:active,
 .btn:active,
 a.btn:active,
 button:active,
@@ -159,7 +162,7 @@ input[type=submit]:active {
     -webkit-box-shadow: inset 0 2px 3px rgba(0, 0, 0, .6);
     box-shadow: inset 0 2px 3px rgba(0, 0, 0, .6)
 }
-
+#kontakt button[type="submit"]:focus,
 .btn:focus,
 a.btn:focus,
 button:focus,
@@ -195,15 +198,16 @@ input[type=submit]:focus {
 
 .actions {
     text-align: center;
-    /*padding-top: 1em*/
+    padding-top: 1em
 }
 
-input[type=email],
-input[type=password],
-input[type=tel],
-input[type=text],
-select,
-textarea {
+
+#kontakt input[type=email],
+#kontakt input[type=password],
+#kontakt input[type=tel],
+#kontakt input[type=text],
+#kontakt select,
+#kontakt textarea {
     height: 40px;
     line-height: 39px;
     width: 100%;
@@ -215,18 +219,18 @@ textarea {
     border-radius: 0
 }
 
-textarea {
+#kontakt textarea {
     height: 130px;
     padding: .5em;
     line-height: 1rem
 }
 
-input[type=email]:focus,
-input[type=password]:focus,
-input[type=tel]:focus,
-input[type=text]:focus,
-select:focus,
-textarea:focus {
+#kontakt input[type=email]:focus,
+#kontakt input[type=password]:focus,
+#kontakt input[type=tel]:focus,
+#kontakt input[type=text]:focus,
+#kontakt select:focus,
+#kontakt textarea:focus {
     outline: 0;
     border-color: #3d93e1
 }
