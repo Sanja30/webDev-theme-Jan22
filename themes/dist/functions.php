@@ -126,6 +126,17 @@ add_action('wp_enqueue_scripts', function () {
 
 });
 
+
+//Sidebar registrieren
+add_action('widgets_init', function(){
+
+     register_sidebar(array(
+       'name' => __('Sidebar fur Blogdetailseite', 'wifi'),
+       'id' => 'sidebar_posts',
+
+     ));
+});
+
 /* --- Funktonen für das Plugin ACF-Pro --- */
 
 /* Bedingung: Prüfe ob ACF Pro installiert und aktiviert ist

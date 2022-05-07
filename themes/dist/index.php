@@ -43,14 +43,12 @@
                 
                 </a>
                 <div class="blog-description">
-                    <time class="meta" datetime="<?php the_time('Y-m-d'); ?>">
-                        <span class="icon-calendar" aria-hidden="true"></span>&nbsp;
-                        <?php the_time('d.m.Y');?>
-                    </time>
-                    <span class="meta category">
-                            <span class="icon-category" aria-hidden="true"></span>&nbsp;
-                           <?php the_category(' | ')?><!-- <a href="blog.html">Web Entwicklung</a> , u zagradi kako zelimo razdvajati kategorije , | / npr-->
-                        </span>
+                    
+                     <?php 
+                     include(locate_template( 'template-parts/post-meta.php'));
+                     ?><!--eingebunden schnipsel vom post-meta.php-->
+
+
                     <h3 class="blog-title">
                         <a href="<?php the_permalink(); ?>"><?php the_title(); ?></a><!--tu je bio link na single post seite koja je single.php, i gornj link isto tako , i title posta-->
                     </h3>
