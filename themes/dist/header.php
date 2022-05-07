@@ -42,8 +42,18 @@
          ?>
     </nav>
 </div>
+
+<?php
+$headerimage = get_field('headerimage');
+
+if(empty($headerimage)){
+    $headerimage = get_field('default_header_bild', 'options');/*Ako na header na odredenim stranicama nema slike uzmi default sliku */
+}
+?>
+
+
 <?php if(is_front_page()):?>
-<header id="page-header" style="background-image: url('<?php the_field('headerimage');?>');">
+<header id="page-header" style="background-image: url('<?php echo $headerimage; ?>');">
     <h1 class="page-title animate zoom-in"><?php the_title(); ?></h1>
     <a href="#content" class="scroll-down">
         <span class="icon-arrow-down" aria-hidden="true"></span>
@@ -51,5 +61,5 @@
     </a>
 </header>
 <?php else: ?>
-   <div id="page-header" style="background-image: url('<?php the_field('headerimage'); ?>');"></div>
-<?php endif; ?>    
+   <div id="page-header" style="background-image: url('<?php echo $headerimage; ?>');"></div>
+<?php endif; ?>  

@@ -72,8 +72,8 @@ add_action('after_setup_theme', function () {
      ));
 
 
-
-
+    /*Zusätzliche Bild grösse */
+    add_image_size('post-image', 800, 400, array('center', 'top'));
 
     /* -- Gutenberg Editor --
     * https://developer.wordpress.org/block-editor/developers/themes/theme-support/
