@@ -850,6 +850,45 @@ input[type=submit]:focus {
     display: block;
     font-size: .9em
 }
+/*----------------------------------------------------------*/
+.wp-block-categories,
+.wp-block-latest-posts {
+    list-style-type: none;
+    padding: 0;
+}
+
+.wp-block-categories li,
+.wp-block-latest-posts li{
+    margin-top: .5em;
+}
+
+.wp-block-categories li a {
+    color: #383838;
+    padding-left: .7em;
+    box-shadow: inset 3px 0 0 #383838;
+    display: inline-block;
+    text-decoration: none;
+}
+
+.wp-block-categories li a:hover {
+    color: #3D93E1;
+    box-shadow: inset 3px 0 0 #3D93E1;
+    text-decoration: none;
+}
+
+.wp-block-latest-posts li a {
+    text-decoration: none;
+}
+
+.wp-block-latest-posts li a:hover{
+    text-decoration: underline;
+}
+
+.wp-block-latest-posts li span {
+    display: block;
+    font-size: .9em;
+}
+/*----------------------------------------------------------*/
 
 #kontakt {
     background-color: #ebebeb;

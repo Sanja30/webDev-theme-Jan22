@@ -133,6 +133,10 @@ add_action('widgets_init', function(){
      register_sidebar(array(
        'name' => __('Sidebar fur Blogdetailseite', 'wifi'),
        'id' => 'sidebar_posts',
+       'before_widget' => '<div class="widget %2$s">', // HTML-Markup vor dem Widget. "%2$s" ist ein Platzhalter für die Widget-Klassen ("%1$s" wäre der Platzhalter für die Widget-ID falls notwendig)
+       'after_widget' => '</div>', // HTML-Markup nach dem Widget.
+       'before_title' => '<h4 class="widget-title"><span>', // HTML-Markup vor dem Titel (Text).
+       'after_title' => '</span></h4>' // HTML-Markup nach dem Titel (Text).
 
      ));
 });
