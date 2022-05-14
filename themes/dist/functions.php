@@ -141,6 +141,65 @@ add_action('widgets_init', function(){
      ));
 });
 
+
+// Register Custom Post Type
+function post_type_references() {
+
+	$labels = array(
+		'name'                  => _x( 'Referenzen', 'Post Type General Name', 'wifi' ),
+		'singular_name'         => _x( 'Referenz', 'Post Type Singular Name', 'wifi' ),
+		'menu_name'             => __( 'Referenzen', 'wifi' ),
+		'name_admin_bar'        => __( 'Post Type', 'wifi' ),
+		'archives'              => __( 'Item Archives', 'wifi' ),
+		'attributes'            => __( 'Item Attributes', 'wifi' ),
+		'parent_item_colon'     => __( 'Parent Item:', 'wifi' ),
+		'all_items'             => __( 'Alle Referenzen', 'wifi' ),
+		'add_new_item'          => __( 'Add New Item', 'wifi' ),
+		'add_new'               => __( 'Neue Referenz', 'wifi' ),
+		'new_item'              => __( 'New Item', 'wifi' ),
+		'edit_item'             => __( 'Referenz bearbeiten', 'wifi' ),
+		'update_item'           => __( 'Referenz aktualisieren', 'wifi' ),
+		'view_item'             => __( 'View Item', 'wifi' ),
+		'view_items'            => __( 'View Items', 'wifi' ),
+		'search_items'          => __( 'Search Item', 'wifi' ),
+		'not_found'             => __( 'Not found', 'wifi' ),
+		'not_found_in_trash'    => __( 'Not found in Trash', 'wifi' ),
+		'featured_image'        => __( 'Featured Image', 'wifi' ),
+		'set_featured_image'    => __( 'Set featured image', 'wifi' ),
+		'remove_featured_image' => __( 'Remove featured image', 'wifi' ),
+		'use_featured_image'    => __( 'Use as featured image', 'wifi' ),
+		'insert_into_item'      => __( 'Insert into item', 'wifi' ),
+		'uploaded_to_this_item' => __( 'Uploaded to this item', 'wifi' ),
+		'items_list'            => __( 'Items list', 'wifi' ),
+		'items_list_navigation' => __( 'Items list navigation', 'wifi' ),
+		'filter_items_list'     => __( 'Filter items list', 'wifi' ),
+	);
+	$args = array(
+		'label'                 => __( 'Referenz', 'wifi' ),
+		'description'           => __( 'CPT fur unsere Testimonials/Referenzen', 'wifi' ),
+		'labels'                => $labels,
+		'supports'              => array( 'title' ),
+		'hierarchical'          => false,
+		'public'                => true,
+		'show_ui'               => true,
+		'show_in_menu'          => true,
+		'menu_position'         => 10,
+		'menu_icon'             => 'dashicons-admin-users',
+		'show_in_admin_bar'     => true,
+		'show_in_nav_menus'     => false,
+		'can_export'            => true,
+		'has_archive'           => true,
+		'exclude_from_search'   => true,
+		'publicly_queryable'    => true,
+		'capability_type'       => 'page',
+	);
+	register_post_type( 'references', $args );
+
+}
+add_action( 'init', 'post_type_references', 0 );
+
+
+
 /* --- Funktonen für das Plugin ACF-Pro --- */
 
 /* Bedingung: Prüfe ob ACF Pro installiert und aktiviert ist
@@ -173,13 +232,11 @@ if (function_exists('acf_add_options_page')) {
     * https://wordpress.stackexchange.com/questions/315511/gutenberg-editor-add-a-custom-category-as-wrapper-for-custom-blocks
     */
 
-    /*add_filter('block_categories', function ($categories, $post) {
-        if ($post->post_type !== 'page') {
-            return $categories;
-        }
+    add_filter('block_categories_all', function ($categories) {
+       
 
         /* "array_merge()" fügt zwei oder mehrere arrays zusammen: https://www.php.net/manual/de/function.array-merge.php  */
-/*
+
         
         return array_merge(
             array(
@@ -193,12 +250,55 @@ if (function_exists('acf_add_options_page')) {
     }, 10, 2);
   /*
 
-    /* -- ACF Gutenberg-Blöcke erstellen --
+  /* -- ACF Gutenberg-Blöcke erstellen --
+
     * https://www.advancedcustomfields.com/resources/acf_register_block_type/
+
     */
+
     add_action('acf/init', 'my_acf_init');
+
     function my_acf_init()
+
     {
+
+
+
+        // check function exists
+
+        if (function_exists('acf_register_block')) {
+
+
+
+            // register a block
+
+            acf_register_block(array(
+
+                'name' => 'wifi_teaser', // Interner Name
+
+                'title' => __('Teaser', 'wifi'), // Titel (Anzeigename)
+
+                'description' => __('Teaser 3-Spalten', 'wifi'), // Beschreibung (wird im Editor bei der Blockauswahl angezeigt)
+
+                'supports' => array('anchor' => true), // Ermöglicht bei den Block-Einstellungen eine ID (Anchor) einzufügen
+
+                'render_template' => 'template-parts/block-teaser.php', // Pfad zum Template (HTML & PHP) des Gutenberg-Block
+
+                'category' => 'wifi-category', // in welcher Kategorie der Block erscheint - in diesem Fall in unserer eigenen Kategorie, die mit "add_action('block_categories'..)" angelegt wurde
+
+                'icon' => 'post-status', // https://developer.wordpress.org/resource/dashicons/#smiley
+
+                'keywords' => array('Teaser', 'Neuigkeiten'), // optional für die Suche im Editor
+
+                'post_types' => array('posts', 'page'), // bei welchen Post-Types der Block angezeigt wird bzw. verwendet werden kann. In diesem Fall bei Seiten (page) und Beiträgen (post)
+
+                'align' => false, // optional ( left, center, right, wide u. full)
+
+                'mode' => false, // verhindert das Links im Editor nicht weiterleiten, sondern die Bearbeitung des ACF-Blocks erzwungen wird
+
+            ));
+
+        }
 
     }
 

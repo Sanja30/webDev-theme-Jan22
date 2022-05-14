@@ -9,31 +9,7 @@
      }
 
     } ?>
-    </section>
-
-
-
-<!--jhjh
-
-    <?php //Daten Holen?>
-    <?php query_posts( array(
-        'post_type' => 'post',
-        'posts_per_page' => 3
-    ));  ?>
-    <?php //Daten ausgeben?>
-    <?php if(have_posts()): ?>
-    
-
-
-
-        
-        <?php while(have_posts()):
-            the_post();
-            the_title('<h2>', '</h2')?>
-        
-    
-      <?php wp_reset_query();
-    ?> 
+    </section> 
 </main>
 
 <?php get_footer(); ?>

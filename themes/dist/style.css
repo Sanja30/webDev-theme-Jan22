@@ -1466,3 +1466,31 @@ input[type=submit]:focus {
         height: calc(100vh - 100px)
     }
 }
+
+
+#uebung h1 {
+    font-size: 30px;
+    color: #6c5353;
+    text-align: center;
+}
+#uebung-div {
+    display: flex;
+    justify-content: space-between;
+
+}
+#uebung-div p{
+    width: 50% ;
+    color: #6c5353;
+}
+#uebung-div img{
+    width: 40%;
+}
+#uebung.primary {
+    background-color: blue;
+}
+#uebung.black {
+    background-color: #000;
+}
+#uebung.white {
+    background-color: #fff;
+}
