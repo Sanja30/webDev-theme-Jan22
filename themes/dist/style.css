@@ -1494,3 +1494,6 @@ input[type=submit]:focus {
 #uebung.white {
     background-color: #fff;
 }
+.teaser-item {
+    height: 100%;
+}
