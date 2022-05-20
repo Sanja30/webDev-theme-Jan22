@@ -5,6 +5,7 @@
 
       <?php $phone = get_field('phone', 'options');?>
       <?php if(!empty($phone)): ?> 
+        
         <dt>
             <span class="icon-phone" aria-hidden="true"></span>
             <span class="screen-reader-text"><?php _e('Telefonnummer', 'wifi'); ?></span>

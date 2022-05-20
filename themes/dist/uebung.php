@@ -9,7 +9,7 @@
     <?php //Daten Holen?>
     <?php query_posts( array(
         'post_type' => 'references',
-        'posts_per_page' => 1,
+        'posts_per_page' => 2,
         'orderby' =>'ASC' //slucajni redoslijed, ASC, DESC 
     ));?>
 
@@ -28,6 +28,7 @@
     </div>
      
     </section>
+    
     <?php endwhile?>
     <?php endif ?>
     <?php wp_reset_query();?>
