@@ -1,3 +1,4 @@
+<?php if(!is_page_template( 'kontakt.php' )):?>
 <aside id="kontakt" class="container-small">
     <h2 class="section-title animate fade-in-up"><?php _e('Kontakt', 'wifi'); ?></h2>
     <dl class="contact-info animate fade-in-up">
@@ -13,7 +14,8 @@
         <dd>
             <a href="tel:<?php echo preg_replace("/[^\+\d]+/", "", $phone); ?>"><?php echo $phone; ?></a>
         </dd>
-      <?php endif; ?>  
+      <?php endif; ?> 
+
 
 
 
@@ -58,6 +60,8 @@
 
     </div>
 </aside>
+<?php endif ?>
+
 <footer id="page-footer" class="container">
     <div class="columns">
         <div class="col-3">

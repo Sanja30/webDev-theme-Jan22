@@ -60,6 +60,9 @@ if(empty($headerimage)){
         <span class="screen-reader-text"><?php _e('Zum Inhalt', 'wifi'); ?></span>
     </a>
 </header>
-<?php else: ?>
+
+<?php elseif(!is_page_template('kontakt.php')):?>
    <div id="page-header" style="background-image: url('<?php echo $headerimage; ?>');"></div>
 <?php endif; ?>  
+
+

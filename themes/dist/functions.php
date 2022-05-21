@@ -415,6 +415,32 @@ if (function_exists('acf_add_options_page')) {
 
             ));
 
+            acf_register_block(array(
+
+                'name' => 'block-kontakt', // Interner Name
+
+                'title' => __('block-kontakt', 'wifi'), // Titel (Anzeigename)
+
+                'description' => __('Block-kontakt', 'wifi'), // Beschreibung (wird im Editor bei der Blockauswahl angezeigt)
+
+                'supports' => array('anchor' => true), // Ermöglicht bei den Block-Einstellungen eine ID (Anchor) einzufügen
+
+                'render_template' => 'template-parts/block-kontakt.php', // Pfad zum Template (HTML & PHP) des Gutenberg-Block
+
+                'category' => 'wifi-category', // in welcher Kategorie der Block erscheint - in diesem Fall in unserer eigenen Kategorie, die mit "add_action('block_categories'..)" angelegt wurde
+
+                'icon' => 'post-status', // https://developer.wordpress.org/resource/dashicons/#smiley
+
+                'keywords' => array('Uebung', 'Neuigkeiten'), // optional für die Suche im Editor
+
+                'post_types' => array('posts', 'page'), // bei welchen Post-Types der Block angezeigt wird bzw. verwendet werden kann. In diesem Fall bei Seiten (page) und Beiträgen (post)
+
+                'align' => false, // optional ( left, center, right, wide u. full)
+
+                'mode' => false, // verhindert das Links im Editor nicht weiterleiten, sondern die Bearbeitung des ACF-Blocks erzwungen wird
+
+            ));
+
         }
 
     }
