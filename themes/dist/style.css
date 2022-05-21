@@ -1534,3 +1534,41 @@ input[type=submit]:focus {
     color: #444;
     font-size: 32px;
 }
+.has-color-primary-color{
+    color: #7229B2;
+}
+.has-color-secondary-color{
+    color: #3D93E1;
+}
+.has-color-background-color{
+    color: #fefefe;
+}
+.has-color-font-color{
+    color: #383838;
+}
+.has-color-primary-background-color{
+    background-color: #7229B2;
+}
+.has-color-secondary-background-color{
+    background-color: #3D93E1;
+}
+.has-color-background-background-color{
+    background-color: #fefefe;
+}
+.has-color-font-background-color{
+    background-color: #383838;
+}
+.has-normal-font-size{
+    font-size: 17px;
+}
+.has-large-font-size{
+    font-size: 24px;
+}
+.errorSeite h1{
+    color: rgb(193, 46, 46);
+    font-size: 40px;
+}
+.errorSeite p{
+    font-size: 17px;
+    color:#24a51b;
+}

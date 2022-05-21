@@ -95,7 +95,61 @@ add_action('after_setup_theme', function () {
     // Adminbar im Frontend deaktivieren (wenn aktiviert, sollten die Syles für Navigation angepasst werden)
     //add_filter('show_admin_bar', '__return_false');
 
+    //Custom styles fur Gutenberd-Editor (Backend)
+    add_theme_support('editor-styles');
+    //erstellen zusatzliche css nur fur das
+    add_editor_style('assets/style-editor.css' );
+    add_editor_style('assets/icons/style.min.css' );
+
+    //Farben styles fur Gutenberg-Editor (Backend)
+    add_theme_support ('disable-custom-colors');
+
+    //Farbverläaufe ausblenden
+    add_theme_support('disable-custom-gradients');
+
+    //Eigen Farben fur Gutenberg definieren
+    add_theme_support('editor-color-palette', array(
+        array(
+            'name' => __('Hauptfarbe', 'wifi'),
+            'color' => '#7229B2',
+            'slug' => 'color-primary'
+        ),
+        array(
+            'name' => __('Nebenfarbe', 'wifi'),
+            'color' => '#3D93E1',
+            'slug' => 'color-secondary'
+        ),
+        array(
+            'name' => __('Schriftfarbe', 'wifi'),
+            'color' => '#383838',
+            'slug' => 'color-font'
+        ),
+        array(
+            'name' => __('Hintergrundfarbe', 'wifi'),
+            'color' => '#fefefe',
+            'slug' => 'color-background'
+        )
+    ));
+    //Alle Schriftgrößen im Gutenberg ausblenden
+    add_theme_support('disable-custom-font-sizes');
+
+    add_theme_support('editor-font-sizes', array(
+        array(
+            'name' => __('Normal', 'wifi'),
+            'size' => 17,
+            'slug' => 'normal'
+        ),
+        array(
+            'name' => __('Groß', 'wifi'),
+            'size' => 24,
+            'slug' => 'large'
+        ),
+    ));
+
+
 });
+
+
 
 /* ---- CSS & JS in <head> bzw. vor dem </body> einfügen [ wp_head() , wp_footer() ] ----
 * https://developer.wordpress.org/reference/functions/wp_enqueue_script/
@@ -140,7 +194,18 @@ add_action('widgets_init', function(){
 
      ));
 });
-
+//Gutenberg-blocke ausblenden...dodajemo sto zelimo da je pristupacno korisniku
+/*
+add_filter('allowed_block_types_all', function($allowed_blocks){
+   return array(
+        'core/block',
+        'core/paragraph',
+        'core/heading',
+        'acf/wifi-teaser',//tu ne funkcionitaju unterstriche ali ako stavimo bindestrich iako je u original imenu unterstrich ... svejedno radi
+        'acf/block-uebung'
+   );
+});
+*/
 
 // Register Custom Post Type
 function post_type_references() {

@@ -20,7 +20,7 @@ if(!empty($block['className'])){
          <div class="message">
              <h4><?php echo  $item ['h4'] ?></h4>
              <h1><?php echo  $item ['h1'] ?></h1>
-     </div>
+         </div>
          
     </div>
     
