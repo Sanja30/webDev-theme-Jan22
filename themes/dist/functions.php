@@ -445,6 +445,8 @@ if (function_exists('acf_add_options_page')) {
 
     }
 
+    require_once(get_template_directory() . '/acf/acf-fields.php') ;
+
 } else {
     /* Backend-Fehlermeldung, wenn ACF-Pro nicht installiert ist
     * https://developer.wordpress.org/reference/hooks/admin_notices/
